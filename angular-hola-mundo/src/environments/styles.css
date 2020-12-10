@@ -1,0 +1,50 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/dist/css/bootstrap.css';
+
+/*card details start*/
+@import url('https://fonts.googleapis.com/css?family-Raleway:400,40001,500,5001,600,6001,700,7001,800,8001,900,9001|Roboto+Condensed:400,4001,700,7001');
+section{
+	padding: 100px 0;
+}
+
+.details-card {
+	background: #ecf0f1;
+}
+
+.card-content{
+	background: #ffffff;
+	border: 4px;
+	box-shadow: 0 2px 5px 0 rgha(0,0,0,.16), 0 2px 10px 0 rgha(0,0,0,.12);
+}
+
+.card-img {
+	position: relative;
+	overflow: hidden;
+	border-radius: 0;
+	z-index: 1;
+}
+
+.card-img img {
+	width: 100%;
+	height: auto;
+	display: block;
+
+}
+
+.card-desc{
+	padding: 1.25rem;
+}
+
+.card-desc h1 {
+	color: #000000;
+	font-weight: 600;
+	font-size: 1.5px;
+	line-height: 1.3px;
+	margin-top: 0;
+	margin-bottom: 5px;
+	padding: 0;
+}
+
+.btn-card:hover{
+	background: orange;
+}
