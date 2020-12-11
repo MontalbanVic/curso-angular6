@@ -3,6 +3,7 @@ import { DestinoViaje } from './../models/destino-viaje.model';
 import { DestinosApiClient } from './../models/destinos-api-client.model';
 import { Store } from '@ngrx/store';
 import { AppState } from '../app.module';
+import { NuevoDestinoAction } from 'src/assets/destinos-viajes.state.model';
 
 
 @Component({
@@ -33,10 +34,12 @@ export class ListaDestinosComponent implements OnInit {
     this.destinosApiClient.add(d);
     this.onItemAdded.emit(d);
 
+
   }
 
   elegido(e: DestinoViaje) {
     this.destinosApiClient.elegir(e);
+    
   }
 
   getAll() {

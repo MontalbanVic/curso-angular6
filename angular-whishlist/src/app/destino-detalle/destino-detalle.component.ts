@@ -1,6 +1,7 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { DestinosApiClient } from '../models/destinos-api-client.model';
 import { DestinoViaje } from '../models/destino-viaje.model';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-destino-detalle',
@@ -8,29 +9,13 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./destino-detalle.component.css']
 })
 export class DestinoDetalleComponent implements OnInit {
-  @Output() onItemAdded: EventEmitter<DestinoViaje>;
-  fg: FormGroup;
+  destino:DestinoViaje | undefined;
   
-  constructor(fb: FormBuilder) {
-    this.onItemAdded = new EventEmitter();
-    this.fg = fb.group({
-      nombre: ['', Validators.required],
-      url: ['']
-    });
-
-    this.fg.valueChanges.subscribe((form: any) => {
-      console.log('cambio el formulario:', form);
-    });
-   }
+  constructor(private route: ActivatedRoute, private destinoApiClient:DestinosApiClient) {}
 
   ngOnInit(){
-  }
-
-  guardar(nombre: string, url: string): boolean{
-    const d = new DestinoViaje(nombre, url);
-    this.onItemAdded.emit(d);
-    return false;
-
+    const id = this.route.snapshot.paramMap.get('id');
+      this.destino;
   }
 
 }

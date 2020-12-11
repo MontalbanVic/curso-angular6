@@ -3,7 +3,9 @@ import { BehaviorSubject, Subject } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { AppState } from '../app.module';
 import { NuevoDestinoAction, ElegidoFavoritoAction } from 'src/assets/destinos-viajes.state.model';
+import { Injectable } from '@angular/core';
 
+@Injectable()
 export class DestinosApiClient {
 	constructor(private store: Store<AppState>) {
 	}
