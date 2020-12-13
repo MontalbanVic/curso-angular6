@@ -14,6 +14,7 @@ import { NuevoDestinoAction } from 'src/assets/destinos-viajes.state.model';
 export class ListaDestinosComponent implements OnInit {
   @Output() onItemAdded: EventEmitter<DestinoViaje>;
   updates: string[];
+  all;
   
   constructor(private destinosApiClient: DestinosApiClient, private store: Store<AppState>) { 
     this.onItemAdded = new EventEmitter();
@@ -24,6 +25,8 @@ export class ListaDestinosComponent implements OnInit {
         this.updates.push('Se ha elegido a' + d.nombre);
       }
     });
+
+    this.all = store.select((state: { destinos: { items: any; }; }) => state.destinos.items). subscribe((items: any) => this.all = items);
 
   }
 
