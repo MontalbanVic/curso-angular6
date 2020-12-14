@@ -6,6 +6,7 @@ import { StoreModule as NgRxStoreModule, ActionReducerMap} from '@nfgrx/store';
 import { EffectsModule } from '@nfgrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { HttpClientModule, HttpHeaders, HttpRequest, HttpClient } from '@angular/common/http';
+import Dexie from 'dexie';
 
 import { AppComponent } from './app.component';
 import { DestinoViajeComponent } from './destino-viaje/destino-viaje.component';
@@ -24,6 +25,7 @@ import { VuelosMasInfoComponentComponent } from './components/vuelos/vuelos-mas-
 import { VuelosDetalleComponentComponent } from './components/vuelos/vuelos-detalle-component/vuelos-detalle-component.component';
 import { ReservasModule } from './reservas/reservas.module';
 import { InitMyDataAction } from '/models/destinos-viajes-state.model';
+import { DestinoViaje } from './models/destino-viaje.model';
 // app config
 
 export interface AppConfig {
@@ -102,6 +104,25 @@ export function init_app(appLoadService: AppLoadService): () => Promise<any> {
 
  // fin app init
 
+// dexie db
+
+@Injectable({
+  providedIn: 'root'
+})
+
+export class MyDatabase extends Dexie {
+  destinos: Dexie.Table<DestinoViaje, number> | undefined;
+  constructor (){
+    super ('MyDatabase');
+    this.version(1).stores({
+      destinos: '++id, nombre, imagenUrl',
+    });
+  }
+}
+
+export const db = new MyDatabase();
+
+// fin dexie db
 
 @NgModule({
   declarations: [

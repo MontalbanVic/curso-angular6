@@ -34,6 +34,10 @@ export class DestinosApiClient {
         this.http.request(req).subscribe((data: HttpResponse<{}>) => {
             if (data.status === 200) {
                 this.store.dispatch(new NuevoDestinoAction(d));
+                const myDb = db;
+                myDb.destinos.add(d);
+                console.log('todos los destinos de la db!');
+                myDb.destinos.toArray().then((destinos: any) => console.log(destinos))
             }
 
         });
