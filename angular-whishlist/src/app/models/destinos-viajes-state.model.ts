@@ -14,7 +14,6 @@ export interface DestinosViajesState {
     favorito: DestinoViaje;
 }
 
-expor
 export function initializeDestinosViajesState() {
     return {
         items: [],
@@ -68,7 +67,7 @@ export function reducerDestinosViajes(
 ): DestinosViajesState {
     switch (action.type) {
         case DestinosViajesActionTypes.INIT_MY_DATA: {
-            const destinos: string[] = (action as InitMyDataAction).destinos;
+            const destinos: string[] = (action as unknown as InitMyDataAction).destinos;
             return {
                 ...state,
                 items: destinos.map((d) => new DestinoViaje(d, ''))
@@ -89,12 +88,12 @@ export function reducerDestinosViajes(
                 favorito: fav
             };
         }
-        case DestinosViajesActionTypes.VOTE_UP{
+        case DestinosViajesActionTypes.VOTE_UP: {
             const d: DestinoViaje = (action as VoteUpAction).destino;
             d.VoteUp();
             return {...state };
         }
-        case DestinosViajesActionTypes.VOTE_DOWN{
+        case DestinosViajesActionTypes.VOTE_DOWN: {
             const d: DestinoViaje = (action as VoteDownAction).destino;
             d.VoteDown();
             return {...state };

@@ -1,6 +1,7 @@
 import {v4 as uuid} from 'uuid';
 
 export class DestinoViaje {
+    [x: string]: any;
 	
 	selected: boolean = false;
 	servicios:string[];
