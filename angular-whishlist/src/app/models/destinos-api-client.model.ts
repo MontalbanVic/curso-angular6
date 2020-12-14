@@ -7,6 +7,7 @@ import { HttpClient, HttpHeaders, HttpRequest, HttpResponse } from '@angular/com
 
 @Injectable()
 export class DestinosApiClient {
+  [x: string]: any;
     destinos: DestinoViaje[] = [];
 
 	constructor(
