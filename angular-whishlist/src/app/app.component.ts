@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { DestinoDetalleComponent } from './destino-detalle/destino-detalle.component';
+import { Observable } from 'rxjs';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
@@ -11,10 +12,15 @@ export class AppComponent {
   time = new Observable(observer => {
     setInterval(() => observer.next(new Date().toString()), 1000);
   });
-}
 
-DestinoAgregado(d){
+  constructor (private translate: TranslateService) {
+    console.log('********** get translation');
+    translate.getTranslation('en').subscribe(x => console.log('x:' + JSON.stringify(x)));
+    translate.setDefaultLang('es');
+  }
+
+  destinoAgregado(d: any){
 
   //alert(d.nombre);
-
+  }
 }
